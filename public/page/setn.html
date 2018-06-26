@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>假_三立新聞網</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+</head>
+
+<body>
+    <h1 id="msg">刪除舊的網頁資料中...請稍後</h1>
+    <script>
+        var socket = io();
+        var name = "Client Test";
+        socket.on('delete old', function () {
+            setTimeout(() => {
+                socket.emit('delete ok');
+                $("#msg").text("新網頁資料下在中...在等一下");
+            }, 2000);
+        })
+        socket.once('downloadOK', function () {
+
+            $("#msg").text("下載完成");
+            $(
+                "<h2>先說說你的素材ID吧 只能是970250的歐</h2><br><input type='text' id='creativeID'><button id='sendbtn'>送出</button>"
+            ).insertAfter('#msg');
+            $("#sendbtn").click(function () {
+                var creativeID = $("#creativeID").val();
+                socket.emit('creative id', creativeID);
+                $("#sendbtn").remove();
+                $("#creativeID").remove();
+                $("#msg").text("伺服器正在竄改網頁中，請再稍等...");
+            })
+        });
+
+        socket.once('modifyOK', function (data) {
+            console.log("reload")
+            window.location.assign('http://localhost:9999/store/setn/' + socket.id + '?cfadc=7965:' + data);
+        });
+    </script>
+</body>
+
+</html>

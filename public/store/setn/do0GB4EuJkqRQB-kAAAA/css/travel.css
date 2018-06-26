@@ -1,0 +1,94 @@
+﻿* {
+    padding:0;
+    margin:0;
+    font-family: "微軟正黑體";
+}
+.container {
+    display: block;
+    align-items: initial;
+    justify-content: initial;
+    width: initial;
+    min-height:initial;
+    height: initial;
+    max-height: initial;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: initial;
+    background: initial;
+    box-sizing:border-box;
+}
+
+.travel-container {
+    /*width: 300px;*/
+    min-width:295px;
+    max-height: 600px;
+    background-color: #ffffff;
+    overflow: hidden;
+    border: 1px solid #bfc7d9;
+    box-sizing:border-box;
+    border-radius:5px;
+    color:#3c3b3b;
+    font-weight: normal;
+    height:600px;
+}
+
+    .travel-container > div {
+        font-size: 0.875em;
+        color: #666;
+        margin: 1px 2px;
+        border-top: 1px dashed #A6A6A6;
+        padding-top:2px;
+    }
+
+.travel-head {
+    border-radius: 0;
+    font-size:0;
+}
+.travel-head > img {
+    width:100%;
+    
+}
+
+.travel-container > div > .travel-op {
+    display: table-cell;
+    vertical-align: middle;
+    /*border: 1px solid #D9D9D9;*/
+    width: 102px;
+    height: 75px;
+    font-size:0;
+}
+
+            .travel-container > div > .travel-op > a > img {
+                min-width:40px;
+                width:100px;
+                height:75px;
+            }
+
+        .travel-container > div > .travel-ads {
+            width: 100%;
+            background-color:transparent;
+            display: inline-block;
+            vertical-align: top;
+            display:table-cell;
+            padding-left:5px;
+        }
+
+            .travel-container > div > .travel-ads > h5 {
+                font-size: 12px;
+                color: #666;
+                height: 18px;
+                overflow-y: hidden;
+                padding-top: 5px;
+                font-weight:normal;
+            }
+
+                .travel-container > div > .travel-ads > h5 > a {
+                    text-decoration:none;
+                    color: #fff;
+                    font-size:12px;
+                }
+
+                    .travel-container > div > .travel-ads > h5 > a:hover {
+                        color: #0094ff;
+                        text-decoration:underline;
+                    }
