@@ -7,32 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>假_三立新聞網</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="page/loading.css">
 </head>
 
 <body>
-    <h1 id="msg">刪除舊的網頁資料中...請稍後</h1>
+
+        <div class="container-fluid">
+                <div class="row" style="height:50px;">
+        
+                </div>
+                <div id="test">
+                    <div class="loader">
+                        <span>L</span>
+                        <span>O</span>
+                        <span>A</span>
+                        <span>D</span>
+                        <span>I</span>
+                        <span>N</span>
+                        <span>G</span>
+        
+                        <div class="covers">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+        
+                        </div>
+                    </div>
+                    <h1 id="link">準備中...請稍後</h1>
+                </div>
+            </div>
+        
     <script>
         var socket = io();
         var name = "Client Test";
-        socket.on('delete old', function () {
-            setTimeout(() => {
-                socket.emit('delete ok');
-                $("#msg").text("新網頁資料下在中...在等一下");
-            }, 2000);
-        })
+        socket.emit('delete ok');
+        $("#link").text("新網頁資料下載中...");
         socket.once('downloadOK', function () {
 
-            $("#msg").text("下載完成");
+            $("#link").text("下載完成");
             $(
                 "<h2>先說說你的素材ID吧 只能是970250的歐</h2><br><input type='text' id='creativeID'><button id='sendbtn'>送出</button>"
-            ).insertAfter('#msg');
+            ).insertAfter('#link');
             $("#sendbtn").click(function () {
+                $(".loader").show();
                 var creativeID = $("#creativeID").val();
                 socket.emit('creative id', creativeID);
                 $("#sendbtn").remove();
                 $("#creativeID").remove();
-                $("#msg").text("伺服器正在竄改網頁中，請再稍等...");
+                $("#link").text("伺服器正在竄改網頁中，請再稍等...");
             })
         });
 

@@ -16,10 +16,7 @@ function setn(io) {
             urls: ['https://www.setn.com/'],
             directory: 'public/store/setn/' + connect_id,
         };
-        //刪除舊的資料包
-        rimraf('./public/3lee', function () {
-            io.sockets.connected[socket.id].emit('delete old');
-        })
+
         //刪除完成
         socket.on('delete ok', function () {
             //下載目前三立網頁資料包
