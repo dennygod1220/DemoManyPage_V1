@@ -32,7 +32,7 @@ function setn(io) {
                 var $ = cheerio.load(data);
                 $("script[src='advertisement']").remove();
                 $('<ins class="clickforceads" style="display:inline-block;width:970px;height:250px;" data-ad-zone="7965"></ins><script async type="text/javascript" src="//cdn.doublemax.net/js/init.js"></script>').insertAfter('#bar_ad');
-                await fs.writeFile('./public/store/setn/' + socket.id + '/index.html', $.html());
+                await fs.writeFile('./public/store/setn/' + socket.id + '/index.html', $.html(),function(){console.log('callback')});
             });
 
             setTimeout(() => {

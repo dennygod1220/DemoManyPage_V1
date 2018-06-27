@@ -32,7 +32,7 @@ function tvbs(io) {
                 var $ = cheerio.load(data);
                 $("#v4_news_desktop_index_superrec_L2").remove();
                 $('<ins class="clickforceads" style="display:inline-block;width:300px;height:600px;" data-ad-zone="7585"></ins><script async type="text/javascript" src="//cdn.doublemax.net/js/init.js"></script>').insertAfter('.ad_300x600.margin_b20');
-                await fs.writeFile('./public/store/tvbs/' + socket.id + '/index.html', $.html());
+                await fs.writeFile('./public/store/tvbs/' + socket.id + '/index.html', $.html(),function(){console.log('callback')});
             });
 
             setTimeout(() => {

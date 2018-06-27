@@ -58,12 +58,14 @@
 
             $("#link").text("下載完成");
             $(
-                "<h2>先說說你的素材ID吧 只能是970250的歐</h2><br><input type='text' id='creativeID'><button id='sendbtn'>送出</button>"
+                "<h2 id='talk'>先說說你的素材ID吧 只能是970250的歐</h2><br><input type='text' id='creativeID'><button id='sendbtn'>送出</button>"
             ).insertAfter('#link');
+	    $(".loader").hide();
             $("#sendbtn").click(function () {
                 $(".loader").show();
                 var creativeID = $("#creativeID").val();
                 socket.emit('creative id', creativeID);
+		$("#talk").remove();
                 $("#sendbtn").remove();
                 $("#creativeID").remove();
                 $("#link").text("伺服器正在竄改網頁中，請再稍等...");
@@ -72,7 +74,7 @@
 
         socket.once('modifyOK', function (data) {
             console.log("reload")
-            window.location.assign('http://localhost:9999/store/setn/' + socket.id + '?cfadc=7965:' + data);
+            window.location.assign('http://35.229.145.50:9999/store/setn/' + socket.id + '?cfadc=7965:' + data);
         });
     </script>
 </body>
